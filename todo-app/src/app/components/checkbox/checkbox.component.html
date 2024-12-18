@@ -1,0 +1,15 @@
+<button (click)="cycleSetting()">
+  @if(value == 0){
+  <ion-icon name="checkbox-outline"></ion-icon>
+  } @else if (value ==1) {
+
+  <ion-icon id="close" name="close-outline"></ion-icon>
+  <ion-icon name="square-outline"></ion-icon>
+  } @else {
+
+  <ion-icon name="square-outline"></ion-icon>
+  }
+</button>
+<p>
+  {{ setting }}
+</p>

@@ -1,0 +1,48 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  margin: 1.5rem;
+}
+.container-inner {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+}
+ion-textarea,
+ion-input,
+.btn-container > div {
+  background-color: var(--secondary-color);
+}
+ion-button {
+  margin: 0px;
+}
+.btn-container {
+  display: flex;
+  justify-content: space-between;
+}
+.btn-container > div {
+  display: flex;
+  justify-content: space-evenly;
+  width: 30%;
+  padding: 0.5rem 0.1rem;
+  border: solid 1px var(--tertiary-color);
+  border-radius: 4px;
+  button {
+    background-color: transparent;
+  }
+}
+ion-icon {
+  width: 25px;
+  height: 25px;
+}
+
+@media (max-aspect-ratio: 9/16) {
+  .container-inner {
+    width: 80vw;
+  }
+}

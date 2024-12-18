@@ -1,0 +1,41 @@
+.toolbar-inner {
+  display: flex;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin: 1.5rem;
+}
+.filter-container {
+  display: flex;
+  align-items: center;
+  width: calc(10vw + 20rem);
+}
+button {
+  background-color: transparent;
+}
+ion-icon {
+  height: 20px;
+  width: 20px;
+  margin: 0.2rem;
+}
+
+.checkbox-container {
+  gap: 0.5rem;
+  background-color: var(--secondary-color);
+  border-radius: 4px;
+  padding: 1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border: solid 1px var(--tertiary-color);
+}
+ion-title {
+  padding: 0px 7px 0px 20px;
+}
+#close-btn {
+  height: 30px;
+  width: 30px;
+}

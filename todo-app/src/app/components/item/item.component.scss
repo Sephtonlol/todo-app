@@ -1,0 +1,48 @@
+:host {
+  width: 100%;
+  max-width: 450px;
+  height: fit-content;
+}
+
+.container {
+  width: 100%;
+  min-height: 1rem;
+  background-color: var(--secondary-color);
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+  border: solid 1px var(--tertiary-color);
+  border-radius: 4px;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+ion-icon {
+  width: 25px;
+  height: 25px;
+}
+.btn-container {
+  padding-top: 0.4rem;
+  gap: 1rem;
+  flex-shrink: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  transition: transform 0.3s, height 0.3s;
+  height: 35px;
+}
+button {
+  background-color: transparent;
+}
+.menu-btn {
+  transition: transform 0.3s;
+}
+.open {
+  transform: rotate(180deg);
+}
+.closed {
+  transform: scaleY(0%);
+  height: 0px;
+}

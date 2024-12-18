@@ -1,0 +1,52 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <div class="toolbar-inner">
+      <ion-title> To Do </ion-title>
+      <div class="filter-container">
+        <button>
+          <ion-icon name="filter" id="open-filter"></ion-icon>
+        </button>
+
+        <ion-searchbar
+          [(ngModel)]="searchQuery"
+          (ionInput)="checkText()"
+        ></ion-searchbar>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="container">
+    @if(searchResults.length > 0) { @for (item of this.searchResults; track
+    item.key) {
+    <app-item [item]="item"></app-item>
+    } } @else if (lastKey >= 0) { @for (item of this.items; track item.key) {
+    @if(+item.key >= 0) { @if(bookmarked == 0) { @if(item.favorite == false) {
+    <app-item [item]="item"></app-item>
+    } } @else if (bookmarked == 1) { @if(item.favorite == true) {
+    <app-item [item]="item"></app-item>
+    } } @else {
+    <app-item [item]="item"></app-item>
+    } } } }
+  </div>
+  <ion-modal trigger="open-filter">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-button (click)="close()"
+              ><ion-icon id="close-btn" name="close-circle-outline"></ion-icon
+            ></ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <div class="checkbox-container">
+          <app-checkbox [setting]="'Bookmarked'" [key]="'-1'"></app-checkbox>
+          <app-checkbox [setting]="'Completed'" [key]="'-2'"></app-checkbox>
+        </div>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+</ion-content>

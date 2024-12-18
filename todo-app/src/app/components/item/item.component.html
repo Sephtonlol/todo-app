@@ -1,0 +1,78 @@
+@if(menuType == "tap for menu"){
+
+<ion-action-sheet
+  [trigger]="'open-menu' + item.key"
+  [buttons]="actionSheetButtons"
+></ion-action-sheet>
+}
+
+<div class="container" [id]="'open-menu' + item.key">
+  <div class="header">
+    <h1>
+      {{ item.title }}
+    </h1>
+    <div>
+      @if(menuType == "collapsible menu"){
+      <button (click)="menu()">
+        <ion-icon
+          class="menu-btn"
+          [class]="menuState ? 'open' : ''"
+          name="chevron-down"
+        ></ion-icon>
+      </button>
+
+      }
+    </div>
+  </div>
+  <div class="content">
+    <p>
+      {{ item.text }}
+    </p>
+  </div>
+  @if(menuType == "collapsible menu"){
+  <div class="btn-container" [class]="menuState ? '' : 'closed'">
+    <button [routerLink]="['/edit', item.key]">
+      <ion-icon name="brush"></ion-icon>
+    </button>
+    <button (click)="changeBool('favorite')">
+      @if(item.favorite){
+      <ion-icon color="danger" name="bookmark"></ion-icon>
+      } @else {
+      <ion-icon name="bookmark-outline"></ion-icon>
+      }
+    </button>
+    <button (click)="changeBool('completed')">
+      @if(item.completed){
+
+      <ion-icon name="checkmark-circle"></ion-icon>
+      }@else {
+
+      <ion-icon name="checkmark-circle-outline"></ion-icon>
+      }
+    </button>
+  </div>
+  } @else if (menuType =="static menu") {
+  <div class="btn-container">
+    <button [routerLink]="['/edit', item.key]">
+      <ion-icon name="brush"></ion-icon>
+    </button>
+    <button (click)="changeBool('favorite')">
+      @if(item.favorite){
+      <ion-icon color="danger" name="bookmark"></ion-icon>
+      } @else {
+      <ion-icon name="bookmark-outline"></ion-icon>
+      }
+    </button>
+    <button (click)="changeBool('completed')">
+      @if(item.completed){
+
+      <ion-icon name="checkmark-circle"></ion-icon>
+      }@else {
+
+      <ion-icon name="checkmark-circle-outline"></ion-icon>
+      }
+    </button>
+  </div>
+
+  }
+</div>

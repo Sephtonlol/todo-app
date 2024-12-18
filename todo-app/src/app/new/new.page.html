@@ -1,0 +1,80 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>New</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="container">
+    <div class="container-inner">
+      <ion-input
+        type="text"
+        label="Title"
+        label-placement="floating"
+        fill="outline"
+        #title
+        id="title"
+      ></ion-input>
+      <ion-textarea
+        label="Description"
+        labelPlacement="floating"
+        [autoGrow]="true"
+        type="text"
+        #text
+        id="text"
+        fill="outline"
+      ></ion-textarea>
+      <div class="btn-container">
+        <div>
+          <button (click)="changeBool('favorite')">
+            @if(this.favorite){
+            <ion-icon name="bookmark"></ion-icon>
+            } @else {
+            <ion-icon name="bookmark-outline"></ion-icon>
+            }
+          </button>
+          <button (click)="changeBool('completed')">
+            @if(this.completed){
+
+            <ion-icon name="checkmark-circle"></ion-icon>
+            }@else {
+
+            <ion-icon name="checkmark-circle-outline"></ion-icon>
+            }
+          </button>
+        </div>
+        @if(editKey){
+        <ion-button id="open-delete" color="danger" (click)="delete()"
+          >Delete</ion-button
+        >
+        <ion-button id="open-changed" [disabled]="!title.value" (click)="edit()"
+          >Change</ion-button
+        >
+        <ion-toast
+          trigger="open-delete"
+          message="Deleted To-Do item"
+          [duration]="1000"
+          position="top"
+        ></ion-toast>
+        <ion-toast
+          trigger="open-changed"
+          message="Changed To-Do item"
+          [duration]="1000"
+          position="top"
+        ></ion-toast>
+        } @else {
+
+        <ion-button id="open-created" [disabled]="!title.value" (click)="set()"
+          >Create</ion-button
+        >
+        <ion-toast
+          trigger="open-created"
+          message="Created new To-Do item"
+          [duration]="1000"
+          position="top"
+        ></ion-toast>
+        }
+      </div>
+    </div>
+  </div>
+</ion-content>
