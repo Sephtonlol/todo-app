@@ -1,18 +1,30 @@
-@if(menuType == "tap for menu"){
+@if(menuType == "Tap for menu"){
 
 <ion-action-sheet
-  [trigger]="'open-menu' + item.key"
+  [trigger]="'open-menu-' + item.key"
   [buttons]="actionSheetButtons"
 ></ion-action-sheet>
 }
 
-<div class="container" [id]="'open-menu' + item.key">
+<div
+  class="container"
+  [id]="'open-menu-' + item.key"
+  [class.completed]="this.item.completed"
+>
   <div class="header">
     <h1>
       {{ item.title }}
     </h1>
+    @if(menuType == "Tap for menu"){
+
+    <ion-icon
+      color="danger"
+      name="bookmark"
+      id="completed-ribbon"
+      [class.bookmarked]="this.item.favorite"
+    ></ion-icon>
+    } @if(menuType == "Collapsible menu"){
     <div>
-      @if(menuType == "collapsible menu"){
       <button (click)="menu()">
         <ion-icon
           class="menu-btn"
@@ -20,16 +32,15 @@
           name="chevron-down"
         ></ion-icon>
       </button>
-
-      }
     </div>
+    }
   </div>
   <div class="content">
     <p>
       {{ item.text }}
     </p>
   </div>
-  @if(menuType == "collapsible menu"){
+  @if(menuType == "Collapsible menu"){
   <div class="btn-container" [class]="menuState ? '' : 'closed'">
     <button [routerLink]="['/edit', item.key]">
       <ion-icon name="brush"></ion-icon>
@@ -51,7 +62,7 @@
       }
     </button>
   </div>
-  } @else if (menuType =="static menu") {
+  } @else if (menuType =="Static menu") {
   <div class="btn-container">
     <button [routerLink]="['/edit', item.key]">
       <ion-icon name="brush"></ion-icon>

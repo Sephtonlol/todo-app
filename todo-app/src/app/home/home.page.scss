@@ -39,3 +39,12 @@ ion-title {
   height: 30px;
   width: 30px;
 }
+.empty-text {
+  padding-top: 30vh;
+  align-items: center;
+  margin: 0.2rem;
+  text-align: center;
+  .sub-text {
+    opacity: 75%;
+  }
+}

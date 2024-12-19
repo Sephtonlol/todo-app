@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <div class="toolbar-inner">
-      <ion-title> To Do </ion-title>
+      <ion-title> To do </ion-title>
       <div class="filter-container">
         <button>
           <ion-icon name="filter" id="open-filter"></ion-icon>
@@ -18,18 +18,28 @@
 
 <ion-content [fullscreen]="true">
   <div class="container">
-    @if(searchResults.length > 0) { @for (item of this.searchResults; track
-    item.key) {
+    @if(this.items.length > 0 + 3){ @if(searchResults.length > 0) { @for (item
+    of this.searchResults; track item) {
     <app-item [item]="item"></app-item>
-    } } @else if (lastKey >= 0) { @for (item of this.items; track item.key) {
-    @if(+item.key >= 0) { @if(bookmarked == 0) { @if(item.favorite == false) {
+    } } @else { @for (item of this.items; track item) { @if(+item.key >= 0) {
+    @if(bookmarked == 0) { @if(item.favorite == true && (completed == 0 ?
+    item.completed == true : completed == 1 ? item.completed == false : true)) {
     <app-item [item]="item"></app-item>
-    } } @else if (bookmarked == 1) { @if(item.favorite == true) {
+    } } @else if (bookmarked == 1) { @if(item.favorite == false && (completed ==
+    0 ? item.completed == true : completed == 1 ? item.completed == false :
+    true)) {
     <app-item [item]="item"></app-item>
-    } } @else {
+    } } @else { @if(completed == 0 ? item.completed == true : completed == 1 ?
+    item.completed == false : true) {
     <app-item [item]="item"></app-item>
-    } } } }
+    } } } } } } @else {
+    <div class="empty-text">
+      <h1>You're all caught up!</h1>
+      <h1 class="sub-text">Nothing to do.</h1>
+    </div>
+    }
   </div>
+
   <ion-modal trigger="open-filter">
     <ng-template>
       <ion-header>

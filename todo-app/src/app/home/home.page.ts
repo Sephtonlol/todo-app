@@ -6,7 +6,7 @@ import { item } from '../interfaces.item';
 import { FormsModule } from '@angular/forms';
 import { IonicModule, IonModal } from '@ionic/angular';
 import { addIcons } from 'ionicons';
-import { book, closeCircleOutline, filter } from 'ionicons/icons';
+import { closeCircleOutline, filter } from 'ionicons/icons';
 import { CheckboxComponent } from '../components/checkbox/checkbox.component';
 
 @Component({

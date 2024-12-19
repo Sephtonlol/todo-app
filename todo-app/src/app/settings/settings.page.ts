@@ -25,6 +25,5 @@ export class SettingsPage implements OnInit {
 
   async ngOnInit() {
     this.currentValue = await this.storageService.get('-10');
-    console.log(this.currentValue);
   }
 }

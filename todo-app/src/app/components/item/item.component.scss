@@ -14,10 +14,6 @@
   border: solid 1px var(--tertiary-color);
   border-radius: 4px;
 }
-.header {
-  display: flex;
-  justify-content: space-between;
-}
 
 ion-icon {
   width: 25px;
@@ -45,4 +41,18 @@ button {
 .closed {
   transform: scaleY(0%);
   height: 0px;
+}
+.completed {
+  opacity: 50%;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+#completed-ribbon {
+  display: none;
+}
+.bookmarked {
+  display: inline !important;
 }

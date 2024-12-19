@@ -12,7 +12,6 @@ import {
   chevronDown,
 } from 'ionicons/icons';
 import { Router, RouterLink } from '@angular/router';
-import { ConstantPool } from '@angular/compiler';
 
 @Component({
   selector: 'app-item',
@@ -35,8 +34,9 @@ export class ItemComponent implements OnInit {
   @Input() item!: item;
   menuState = false;
   menuType!: string;
-  completedText: string = '';
-  bookmarkedText: string = '';
+  completedText: string = 'Complete';
+  bookmarkedText: string = 'Bookmark';
+  actionSheetButtons!: unknown;
 
   async changeBool(changing: 'completed' | 'favorite') {
     if (changing == 'completed') {
@@ -55,27 +55,6 @@ export class ItemComponent implements OnInit {
     }
   }
 
-  public actionSheetButtons = [
-    {
-      text: 'Edit item',
-      handler: () => {
-        this.router.navigate([`/edit/${this.item.key}`]);
-      },
-    },
-    {
-      text: this.bookmarkedText,
-      handler: () => {
-        this.changeBool('favorite');
-      },
-    },
-    {
-      text: this.completedText,
-      handler: () => {
-        this.changeBool('completed');
-      },
-    },
-  ];
-
   changeMenuText() {
     if (this.item.completed) {
       this.completedText = 'Revert completion';
@@ -87,11 +66,29 @@ export class ItemComponent implements OnInit {
     } else {
       this.bookmarkedText = 'Add to bookmark';
     }
+    this.actionSheetButtons = [
+      {
+        text: 'Edit item',
+        handler: () => {
+          this.router.navigate([`/edit/${this.item.key}`]);
+        },
+      },
+      {
+        text: this.bookmarkedText,
+        handler: () => {
+          this.changeBool('favorite');
+        },
+      },
+      {
+        text: this.completedText,
+        handler: () => {
+          this.changeBool('completed');
+        },
+      },
+    ];
   }
   async ngOnInit(): Promise<void> {
     this.changeMenuText();
     this.menuType = await this.storageService.get('-10');
-    console.log('Completed Text:', this.completedText);
-    console.log('Bookmarked Text:', this.bookmarkedText);
   }
 }

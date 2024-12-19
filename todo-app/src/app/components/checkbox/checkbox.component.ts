@@ -25,7 +25,6 @@ export class CheckboxComponent implements OnInit {
     else if (currentValue == 1) this.value = 2;
     else this.value = 0;
     await this.storageService.set(this.key, this.value);
-    console.log(this.value);
   }
   async ngOnInit() {
     this.value = await this.storageService.get(this.key);
