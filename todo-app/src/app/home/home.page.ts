@@ -69,4 +69,11 @@ export class HomePage {
     this.modal.dismiss();
     this.ionViewWillEnter();
   }
+  async checkFilter(id: string, value: string) {
+    const item = await this.storageService.get(id);
+    const filter = await this.storageService.get(value);
+    if (value == '-1') {
+      const itemFilter = item.favorite;
+    }
+  }
 }
